@@ -1,6 +1,6 @@
 <% @products.each do |product| %>
   <tr>
-    <td><%= product.name %></td>
+    <td><%= product.name %></td> <br>
     <td id="description-<%= product.id %>"><%= truncate(product.description) %></td>
     <button class="js-more" data-id="<%= product.id %>">More Info</button>
   </tr>
@@ -14,7 +14,7 @@ $(function () {
       $("#description-" + id).text(data);
     });
     $.get("/products/" + id + "/inventory", function(data) {
-      binding.pry 
+      binding.pry
       $("#description-" + id).text(data);
     });
   });
