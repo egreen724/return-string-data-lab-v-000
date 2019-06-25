@@ -9,18 +9,17 @@
 <script type="text/javascript" charset="utf-8">
 $(function () {
   $(".js-more").on('click', function() {
-    let id = $(this).data("id");
+
+    var id = $(this).data("id");
     $.get("/products/" + id + "/description", function(data) {
-      let description = data
-    });
-    $.get("/products/" + id + "/inventory", function(data) {
-      if (data == true) {
-        let inventory = "Available"
+      $("#description-" + id).text(data)
+    })
+    $.get('/products/' + id + '/inventory', function(data) {
+      if (data === 'true') {
+        $("#inventory-" + id).text("Available")
+      } else if (data === 'false') {
+        $("#inventory-" + id).text("Sold Out")
       }
-      else (data == false) {
-        let inventory = "Sold Out"
-      }
-      $("#description-" + id).text(description + ", " + inventory);
     });
   });
 });
