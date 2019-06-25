@@ -1,7 +1,7 @@
 <% @products.each do |product| %>
-  <tr>
-    <td><%= product.name %></td> <br>
-    <td id="description-<%= product.id %>"><%= truncate(product.description) %></td>
+    <%= product.name %></td> <br>
+    <div id="description-<%= product.id %>"><%= truncate(product.description) %></div> <br>
+    <div id="inventory-<%= product.id %>">> <br>
     <button class="js-more" data-id="<%= product.id %>">More Info</button>
   </tr>
 <% end %>
@@ -20,7 +20,7 @@ $(function () {
       else (data == false) {
         let inventory = "Sold Out"
       }
-      $("#description-" + id).text(data + ", " + inventory);
+      $("#description-" + id).text(description + ", " + inventory);
     });
   });
 });
