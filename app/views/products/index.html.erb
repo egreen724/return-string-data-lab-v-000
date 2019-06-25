@@ -11,12 +11,17 @@ $(function () {
   $(".js-more").on('click', function() {
     let id = $(this).data("id");
     $.get("/products/" + id + "/description", function(data) {
+      let description = data 
+    });
+    $.get("/products/" + id + "/inventory", function(data) {
+      if (data == true) {
+        let inventory = "Available"
+      }
+      else (data == false) {
+        let inventory = "Sold Out"
+      }
       $("#description-" + id).text(data);
     });
-    // $.get("/products/" + id + "/inventory", function(data) {
-    //   binding.pry
-    //   $("#description-" + id).text(data);
-    // });
   });
 });
 </script>
