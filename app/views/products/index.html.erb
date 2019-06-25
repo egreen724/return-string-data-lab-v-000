@@ -13,10 +13,10 @@ $(function () {
     $.get("/products/" + id + "/description", function(data) {
       $("#description-" + id).text(data);
     });
-    $.get("/products/" + id + "/inventory", function(data) {
-      binding.pry
-      $("#description-" + id).text(data);
-    });
+    // $.get("/products/" + id + "/inventory", function(data) {
+    //   binding.pry
+    //   $("#description-" + id).text(data);
+    // });
   });
 });
 </script>
